@@ -1,0 +1,136 @@
+/* Genel Sayfa Stili */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Uygulama Konteyneri */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Başlık */
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Arama Kutusu */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-bar button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  background-color: #ff5733;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #e0462a;
+}
+
+/* Film Kartları */
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.movie-card {
+  width: 250px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 10px;
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.movie-card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.movie-card p {
+  font-size: 14px;
+  color: #777;
+}
+
+.movie-card a {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #ff5733;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.movie-card a:hover {
+  background-color: #e0462a;
+}
+
+/* Film Detay Sayfası */
+.movie-details {
+  text-align: center;
+}
+
+.movie-details img {
+  width: 60%;
+  border-radius: 10px;
+}
+
+.movie-details p {
+  font-size: 18px;
+  color: #555;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Responsive Tasarım */
+@media screen and (max-width: 768px) {
+  .movie-grid {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .movie-card {
+      width: 90%;
+  }
+
+  .movie-details img {
+      width: 90%;
+  }
+}
