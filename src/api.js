@@ -4,6 +4,29 @@ const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
+const Api = axios.create({
+    baseURL : process.env.REACT_APP_BACKEND_URL,
+    headers : {
+        "Content-Type" : "application/json"
+    }
+});
+
+
+
+
+export const register = (userData) => Api.post("auth/register",userData);
+
+export const login = (userData) => Api.post("auth/login",userData);
+
+export const addFavorite = (movieId,token) => Api.post("/movies/add-favorite" , 
+    {movie_Id:movieId} ,
+     {
+        headers:{Authorization:token}
+    });
+
+export const getFavorites = (token)=> Api.get("/movies/getFavorites", {headers: {Authorization:token}});
+
+
 
 export const fetchMovies = async (query)=>{
     try {
@@ -37,3 +60,5 @@ export const fetchMovieDetails = async (movieId) =>{
     }
 }
 
+
+export default Api;

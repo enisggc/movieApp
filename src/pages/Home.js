@@ -1,7 +1,7 @@
 import MovieCard from "../components/MovieCard";
 import SearchBar from "../components/SearchBar";
 import React, { useState } from "react";
-import { fetchMovies } from "../api";
+import { fetchMovies } from "../Api";
 
 
 
