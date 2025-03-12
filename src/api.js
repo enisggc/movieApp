@@ -19,12 +19,20 @@ export const register = (userData) => Api.post("auth/register",userData);
 export const login = (userData) => Api.post("auth/login",userData);
 
 export const addFavorite = (movieId,token) => Api.post("/movies/add-favorite" , 
-    {movie_Id:movieId} ,
+    {movie_id:movieId} ,
      {
-        headers:{Authorization:token}
+        headers:{Authorization:`Bearer ${token.trim()}`}
     });
 
-export const getFavorites = (token)=> Api.get("/movies/getFavorites", {headers: {Authorization:token}});
+export const getFavorites = (token)=> Api.get("/movies/favorites", {headers: {Authorization:`Bearer ${token.trim()}`}});
+
+export const removeFavorites = (token,movieId)=>
+    Api.delete("/movies/remove-favorite",{
+        headers: { Authorization: `Bearer ${token.trim()}` },
+        data: { movie_id: movieId }
+    })
+    
+
 
 
 
@@ -59,6 +67,87 @@ export const fetchMovieDetails = async (movieId) =>{
         return null;
     }
 }
+
+export const fetchUserDetails = async (token)=>{
+    return Api.get("/auth/login" ,{
+        headers: { Authorization: `Bearer ${token.trim()}` }
+    })
+}
+
+export const getUsers = (token) => {
+    return Api.get("/users", {
+        headers: { Authorization: `Bearer ${token.trim()}` },
+    });
+};
+
+
+export const updateProfile = (userData,token) =>{
+    Api.put("/users/profile",userData,{
+        headers: { Authorization: `Bearer ${token.trim()}`}
+    })
+};
+
+export const followUser = (following_id,token) =>{
+    Api.post("/users/follow",{following_id},{
+        headers: { Authorization: `Bearer ${token.trim()}`}
+    })
+};
+
+export const unfollowingUser = (following_id,token)=>{
+    Api.post("/users/unfollow",{following_id},{
+        headers: { Authorization: `Bearer ${token.trim()}`},
+        data: { following_id },
+    })
+};
+
+
+export const getProfileUser = (userId) =>{
+    Api.get(`/users/profile/${userId}`);
+};
+
+//export const recommendMovie = (receiver_username,movie_title,message , token)=>{
+    /*Api.post("/users/recommend-movie" , { receiver_username, movie_title, message },{
+        headers: { Authorization: `Bearer ${token.trim()}`},
+    });
+};*/
+
+export const recommendMovie = async (receiver_username, movie_title, message, token) => {
+    console.log("📤 API'ye film önerme isteği gönderiliyor:", { receiver_username, movie_title, message, token });
+
+    if (!token || typeof token !== "string") {
+        console.error("Geçersiz token!", token);
+        alert("Oturumunuzun süresi dolmuş olabilir. Lütfen tekrar giriş yapın.");
+        return;
+    }
+
+    console.log("📤 API isteğinde kullanılan token:", `"Bearer ${token}"`);
+
+    try {
+        
+
+        const response = await Api.post("/users/recommend-movie", 
+            { receiver_username, movie_title, message },
+            { headers: { Authorization: `Bearer ${token.trim()}` } }
+        );
+
+        console.log("✅ API Yanıtı:", response.data);
+        return response;
+    } catch (error) {
+        console.error("❌ API Hatası:", error.response ? error.response.data : error.message);
+        throw error;
+    }
+};
+
+
+
+
+export const getRecommendations = (username,token)=>{
+    
+    return Api.get(`/movies/recommendations/${username}`, {
+        headers: { Authorization: `Bearer ${token.trim()}` }
+    });
+}
+
 
 
 export default Api;

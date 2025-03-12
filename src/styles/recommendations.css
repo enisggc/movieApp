@@ -1,0 +1,41 @@
+.recommendations-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-card {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.recommendation-card h3 {
+    margin: 0;
+    color: #333;
+}
+
+.recommendation-card p {
+    color: #555;
+}
+
+.recommendation-card img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.dark-mode .recommendations-container {
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark-mode .recommendation-card {
+    background: #2c2c2c;
+    color: lightgray;
+}

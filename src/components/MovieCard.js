@@ -13,7 +13,9 @@ const MovieCard = ({movie,token})=>{
         }
 
         try {
-            await addFavorite(movie.id,token);
+            console.log("Favorilere ekleniyor, Movie ID:", movie.id);
+            const response = await addFavorite(movie.id ,token);
+            console.log("Favori ekleme yanıtı:", response.data);
             alert("Film favorilere eklendi!");
         } catch (error) {
             console.error("Favorilere ekleme hatası:", error);

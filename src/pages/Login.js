@@ -1,6 +1,9 @@
+import "../styles/auth.css";
 import React,{useState,useEffect} from "react";
 import { login } from "../Api";
 import { useNavigate } from "react-router-dom";
+import { fetchUserDetails } from "../Api";
+
 
 const Login = ({ setToken })=>{
     const [email ,setEmail] = useState("");
@@ -16,13 +19,17 @@ const Login = ({ setToken })=>{
             const response = await login({email,password});
             console.log("Giriş başarılı, gelen token:", response.data.token);
             localStorage.setItem("token",response.data.token);
+            
 
             setToken(response.data.token);
-            
 
-            
+            const userResponse = await fetchUserDetails(response.data.token);
+            localStorage.setItem("user" , JSON.stringify(response.data.user));
 
-            
+            console.log("📢 Kullanıcı bilgileri localStorage'a kaydedildi:", userResponse.data);
+
+            window.location.reload();
+
             navigate("/");
         } catch (error) {
             console.error("Giriş hatası:", error);
@@ -32,9 +39,9 @@ const Login = ({ setToken })=>{
 
     }
     return (
-        <div>
+        <div className="auth-container">
             <h2>Giriş Yap</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="auth-form" onSubmit={handleSubmit}>
                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" placeholder="Şifre" onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Giriş Yap</button>

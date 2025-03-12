@@ -1,3 +1,42 @@
+/* Koyu Mod için Tüm Sayfa */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+/* Navbar için Koyu Mod */
+.navbar.dark {
+  background-color: #222;
+  color: white;
+}
+
+/* Sayfa İçeriği */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.dark-mode .container {
+  background-color: #222;
+  color: white;
+}
+
+/* Koyu Mod Butonu */
+.dark-mode-btn {
+  background-color: #ddd;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dark-mode-btn:hover {
+  background-color: #bbb;
+}
+
+
 /* Genel Sayfa Stili */
 body {
   font-family: 'Arial', sans-serif;

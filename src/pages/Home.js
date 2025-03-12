@@ -6,7 +6,7 @@ import { fetchMovies } from "../Api";
 
 
 
-const Home = () =>{
+const Home = ({ token }) =>{
     const [movies , setMovies] = useState([]);
 
 
@@ -22,7 +22,7 @@ return(
         <SearchBar onSearch={handleSearch}></SearchBar>
         <div className="movie-grid">
         {movies.length > 0 ? (
-                    movies.map(movie => <MovieCard key={movie.id} movie={movie} />)
+                    movies.map(movie => <MovieCard key={movie.id} movie={movie} token={token} />)
                 ) : (
                     <p>Film aramak için bir kelime girin.</p>
                 )}
