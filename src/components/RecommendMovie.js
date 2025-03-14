@@ -22,9 +22,10 @@ const RecommendMovie = ({token})=>{
             return;
         }
         try {
-            console.log("📌 Token değeri:", token);
+            console.log(" Token değeri:", token);
             await recommendMovie(receiverUsername,movieTitle,message,token);
             alert("Film önerisi gönderildi!");
+            setReceiverUsername("");
             setMovieTitle("");
             setMessage("");
         } catch (error) {
@@ -34,28 +35,33 @@ const RecommendMovie = ({token})=>{
     }
 
     return (
-        <div>
-            <h2>Film Öner</h2>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    placeholder="Alıcı Kullanıcı Adı" 
-                    value={receiverUsername} 
-                    onChange={(e) => setReceiverUsername(e.target.value)} 
-                />
-                <input 
-                    type="text" 
-                    placeholder="Film İsmi" 
-                    value={movieTitle} 
-                    onChange={(e) => setMovieTitle(e.target.value)} 
-                />
-                <textarea 
-                    placeholder="Mesajınızı yazın..." 
-                    value={message} 
-                    onChange={(e) => setMessage(e.target.value)} 
-                />
-                <button type="submit">Gönder</button>
-            </form>
+        <div className="recommend-container">
+            <h2>🎬 Film Öner</h2>
+            <div className="recommend-card">
+                <form onSubmit={handleSubmit} className="recommend-form">
+                    <input 
+                        type="text" 
+                        placeholder="Alıcı Kullanıcı Adı" 
+                        value={receiverUsername} 
+                        onChange={(e) => setReceiverUsername(e.target.value)} 
+                        className="modern-input"
+                    />
+                    <input 
+                        type="text" 
+                        placeholder="Film İsmi" 
+                        value={movieTitle} 
+                        onChange={(e) => setMovieTitle(e.target.value)} 
+                        className="modern-input"
+                    />
+                    <textarea 
+                        placeholder="Mesajınızı yazın..." 
+                        value={message} 
+                        onChange={(e) => setMessage(e.target.value)} 
+                        className="modern-textarea"
+                    />
+                    <button type="submit" className="send-btn">📩 Gönder</button>
+                </form>
+            </div>
         </div>
     );
 };

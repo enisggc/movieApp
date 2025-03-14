@@ -3,6 +3,7 @@ import React,{useState,useEffect} from "react";
 import { login } from "../Api";
 import { useNavigate } from "react-router-dom";
 import { fetchUserDetails } from "../Api";
+import { Link } from "react-router-dom";
 
 
 const Login = ({ setToken })=>{
@@ -28,7 +29,7 @@ const Login = ({ setToken })=>{
 
             console.log("📢 Kullanıcı bilgileri localStorage'a kaydedildi:", userResponse.data);
 
-            window.location.reload();
+            
 
             navigate("/");
         } catch (error) {
@@ -46,6 +47,8 @@ const Login = ({ setToken })=>{
                 <input type="password" placeholder="Şifre" onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Giriş Yap</button>
             </form>
+            <Link to="/reset-password" className="forgot-password-link">Şifremi Unuttum</Link> {/* 📌 Link eklendi */}
+
         </div>
     );
 

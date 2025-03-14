@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getUsers } from "../Api";
 import UserList from "../components/UserList";
 import "../styles/users.css";
+import { Link } from "react-router-dom";
 
 
 const Users = ({ token }) => {
@@ -16,7 +17,7 @@ const Users = ({ token }) => {
             try {
                 console.log("🔍 Kullanıcılar getiriliyor...");
                 const response = await getUsers(token); 
-                console.log("✅ Kullanıcılar:", response.data);
+                console.log("Kullanıcılar:", response.data);
                 setUsers(response.data);
             } catch (error) {
                 console.error("Kullanıcılar alınamadı:", error);
@@ -33,7 +34,19 @@ const Users = ({ token }) => {
             {users.length === 0 ? (
                 <p>Yükleniyor veya hiç kullanıcı yok...</p>
             ) : (
-                <UserList users={users} token={token} />
+                <div className="user-list">
+                    {users.map(user => (
+                        <div key={user.id} className="user-card">
+                             <img 
+                                src={user.profile_picture || "/default-profile.png"} 
+                                alt={`${user.username} Profil Resmi`} 
+                                className="user-profile-pic" 
+                            />
+                            <p>{user.username}</p>
+                            <Link to={`/profile/${user.id}`}>Profili İncele</Link>  {/* 🔹 Link eklendi */}
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     );

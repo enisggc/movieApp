@@ -13,6 +13,11 @@ import Profile from './pages/Profile';
 import Users from './pages/Users';
 import Recommendations from './components/Recommendations';
 import RecommendMovie from './components/RecommendMovie';
+import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
+import EditProfile from './pages/EditProfile';
+
+
 
 
 const App = () =>{
@@ -34,7 +39,7 @@ const App = () =>{
       console.log("📢 LocalStorage’dan kullanıcı alındı:", storedUser);
       setUser(storedUser);
     }else{
-      console.log("❌ Kullanıcı bilgisi bulunamadı!");
+      console.log("Kullanıcı bilgisi bulunamadı!");
     }
   }, []);
 
@@ -69,8 +74,12 @@ const toggleDarkMode = () => {
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/login' element={<Login setToken={setToken}/>}></Route>
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path='/favorites' element={<Favorites token={token}/>}></Route>
           <Route path="/profile/:id" element={<Profile token={token} />} />
+          <Route path="/profile/edit" element={<EditProfile token={token} />} />
+
           <Route path="/users" element={<Users token={token} />} />
           
           <Route path="/recommendations" element={

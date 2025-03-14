@@ -1,53 +1,66 @@
+/* Profil Sayfası */
 .profile-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f4f4f4;
 }
 
-.profile-container img {
+.profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.profile-pic {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+    border: 4px solid #008CBA;
     margin-bottom: 10px;
 }
 
-.profile-info h2 {
-    margin: 10px 0;
-    color: #333;
-}
-
-.profile-info p {
-    color: #555;
-}
-
-.profile-edit input,
-.profile-edit textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.profile-edit button {
-    background-color: orange;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
+h3 {
+    margin-bottom: 8px;
+    font-size: 22px;
     font-weight: bold;
 }
 
-.dark-mode .profile-container {
-    background: #1e1e1e;
-    color: white;
+p {
+    font-size: 14px;
+    color: #555;
 }
 
-.dark-mode .profile-info p {
-    color: lightgray;
+.edit-profile-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
+
+.edit-profile-btn:hover {
+    background-color: #006F9A;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
